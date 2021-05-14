@@ -1,62 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel Livewire Todo-List
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation
+1. PHP installieren inkl. CLI, so dass per Terminal/Commandline Befehle ausgeführt werden können
+2. Composer installieren (PHP Paket-Manager): [https://getcomposer.org/download/](https://getcomposer.org/download/)
+3. vorbereitetes Repo klonen: `git clone https://github.com/simonpirmann/livewire-todo-list.git` <br> Alternativ kann auch die manuelle Einrichtung durchgeführt werden (siehe unten)
+4. In das neue Verzeichnis wechseln, z.B. `cd livewire-todo-list`
+5. Die benötigten PHP-Packages über Composer installieren: `composer install` <br> Sollte es zu Memory-Problemen kommen hat bei mir folgender Befehl geholfen (anstatt normalem composer install): `php -d memory_limit=-1 $(which composer) install`
+6. Eine .env Datei im Root-Verzeichnis anlegen. <br>Im Optimalfall wird die example-Datei kopiert: `cp .env-example .env`
+7. Application-Key erstellen: `php artisan key:generate`
+8. Server starten: `php artisan serve` <br> In der Console wird der Localhost-Port bzw. der Link zur App angezeigt, im Normalfall: `http://127.0.0.1:8000`
+9. Optional: Den Link aufrufen, es sollte "Hello Simon" angezeigt werden.
+10. Auch Optional: Unter `/livewire-todo-list/app/Http/Livewire/HelloWorld.php` den Parameter `name` anpassen und überprüfen, ob dieser sich auch auf der Seite geändert hat.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Manuelle Einrichtung
+Bei dem zuvor beschriebenen Vorgehen, wird ein bereits eingerichtetes Repository verwendet.
+Für diejenigen, die etwas mehr wollen, ist die folgende manuelle Einrichtung, ohne das Repository.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. PHP und Composer installieren
+2. Laravel installieren
+<br>
+`composer create-project laravel/laravel laravel-livewire`
+<br>
+`cd laravel-livewire`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+3. Git einrichten (optional)
+<br>
+`git init`
+<br>
+`git add *`
+<br>
+`git commit -m "initial commit"`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+4. Livewire installieren
+<br>
+`composer require livewire/livewire`
+<br>
+Bei Memory-Problemen:
+<br>
+`php -d memory_limit=-1 $(which composer) require livewire/livewire`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+5. Cleanup  welcome.blade + Livewire  Styles (Z9) und Scripts (Z14) hinzufügen<br>
+  <img src="https://www.simon-pirmann.de/codepen-assets/livewire-installation/livewire-installation-cleanup-welcome.png" width="600">
 
-## Laravel Sponsors
+6. Erste Komponente erstellen - Hello World
+<br>
+`php artisan make:livewire hello-world`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Ergebnis:
+<br>
+Class / Livewire-Component (wie ein Controller): `app/Http/Livewire/HelloWorld.php`
+<br>
+View: `resources/views/livewire/hello-world.blade.php`
 
-### Premium Partners
+7. Komponente in View laden:
+<br>
+`@livewire('hello-world')`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+8. Render-Method um Data erweitern:<br>
+<img src="https://www.simon-pirmann.de/codepen-assets/livewire-installation/livewire-installation-render-method.png" width="550">
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+9. Data im Komponen-View ausgeben:<br>
+<img src="https://www.simon-pirmann.de/codepen-assets/livewire-installation/livewire-installation-component-view.png" width="250">

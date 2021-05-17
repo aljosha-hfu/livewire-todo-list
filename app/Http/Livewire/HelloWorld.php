@@ -9,7 +9,7 @@ class HelloWorld extends Component
     public function render()
     {
         return view('livewire.hello-world', array(
-			'name' => 'Simon'
+			'name' => 'Aljosha'
 		));
     }
 }

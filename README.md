@@ -1,5 +1,8 @@
 # Laravel Livewire Todo-List
 
+## About
+The code was created during a course of my Computer Science in Media studies at Furtwangen University. This project was created by [Simon Pirmann](https://github.com/simonpirmann) to demonstrate features of livewire.
+
 ## Installation
 1. PHP installieren inkl. CLI, so dass per Terminal/Commandline Befehle ausgeführt werden können
 2. Composer installieren (PHP Paket-Manager): [https://getcomposer.org/download/](https://getcomposer.org/download/)
